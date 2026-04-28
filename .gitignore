@@ -37,4 +37,3 @@ x86/
 *.log
 *.tmp
 *.temp
-*.env
