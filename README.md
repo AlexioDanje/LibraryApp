@@ -58,35 +58,50 @@ If you want to use a different MySQL password:
 3. Change `yourpassword` to your actual MySQL root password
 4. Rebuild the application (see Building section)
 
-## Building from Source
+## Setup and Building from Source
 
-### On Windows:
+### Using an IDE (Visual Studio) on Windows
 
-1. **Install .NET 8 SDK**
+1. **Clone the repository**
+   - Open your terminal or command prompt
+   - Run: `git clone <repository-url>` (replace `<repository-url>` with the actual URL)
+   - Navigate to the cloned project folder
+
+2. **Open in Visual Studio**
+   - Open Visual Studio
+   - Select "Open a project or solution"
+   - Navigate to the cloned folder and select `LibraryApp.vbproj`
+
+3. **Build the Application**
+   - In Visual Studio, ensure the solution configuration is set to `Release`
+   - Right-click the project in the Solution Explorer and select **Publish**
+   - Choose a target (Folder) and configure it for a Windows self-contained deployment (e.g., target runtime `win-x64`)
+   - Click **Publish** to build the `.exe`
+
+4. **Run the Application**
+   - Go to the publish folder you configured
+   - Double-click `LibraryApp.exe`
+
+### Using Command Line on Windows
+
+1. **Clone the repository**
+   - Open Command Prompt
+   - Run: `git clone <repository-url>`
+   - Navigate to the project folder
+
+2. **Install .NET 8 SDK**
    - Download from: https://dotnet.microsoft.com/download/dotnet/8.0
    - Run the installer and follow the prompts
 
-2. **Build the Application**
-   - Open Command Prompt
-   - Navigate to the project folder (where `LibraryApp.vbproj` is located)
-   - Run this command:
+3. **Build the Application**
+   - Run this command in the project directory:
    ```cmd
    dotnet publish LibraryApp.vbproj -c Release -r win-x64 --self-contained true -o ./publish
    ```
 
-3. **Run the Application**
+4. **Run the Application**
    - Go to the `publish` folder
    - Double-click `LibraryApp.exe`
-
-### On Linux/Mac (using Docker):
-
-If you're building on Linux/Mac to deliver to Windows users:
-
-```bash
-docker run --rm -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/sdk:8.0 dotnet publish LibraryApp.vbproj -c Release -r win-x64 --self-contained true -o /app/publish
-```
-
-The `publish` folder will contain everything needed to run on Windows.
 
 ## Troubleshooting
 
