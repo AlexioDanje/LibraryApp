@@ -18,6 +18,11 @@ x86/
 [Oo]bj/
 [Ll]og/
 
+# Published output
+publish/
+publish-*/
+*.zip
+
 # Visual Studio cache/options directory
 .vs/
 

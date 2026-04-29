@@ -34,9 +34,12 @@ Enter password: `yourpassword`
 If connected successfully, type `exit` to quit.
 
 ### 3. Run the Application
-- Extract the `LibraryApp-Windows.zip` file
-- Navigate to the `publish-standalone` folder
-- Double-click `LibraryApp.exe`
+
+**First time setup:**
+1. Make sure MySQL Server is installed and running
+2. Build the application (see "Building from Source" section below)
+3. Navigate to the `publish` folder created by the build
+4. Double-click `LibraryApp.exe`
 
 The application will automatically:
 - Create the `LibraryDB` database
@@ -57,21 +60,33 @@ If you want to use a different MySQL password:
 
 ## Building from Source
 
-If you have the source code and want to rebuild:
-
 ### On Windows:
-1. Install .NET 8 SDK: https://dotnet.microsoft.com/download/dotnet/8.0
-2. Open Command Prompt in the project folder
-3. Run:
+
+1. **Install .NET 8 SDK**
+   - Download from: https://dotnet.microsoft.com/download/dotnet/8.0
+   - Run the installer and follow the prompts
+
+2. **Build the Application**
+   - Open Command Prompt
+   - Navigate to the project folder (where `LibraryApp.vbproj` is located)
+   - Run this command:
    ```cmd
    dotnet publish LibraryApp.vbproj -c Release -r win-x64 --self-contained true -o ./publish
    ```
-4. The executable will be in the `publish` folder
+
+3. **Run the Application**
+   - Go to the `publish` folder
+   - Double-click `LibraryApp.exe`
 
 ### On Linux/Mac (using Docker):
+
+If you're building on Linux/Mac to deliver to Windows users:
+
 ```bash
 docker run --rm -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/sdk:8.0 dotnet publish LibraryApp.vbproj -c Release -r win-x64 --self-contained true -o /app/publish
 ```
+
+The `publish` folder will contain everything needed to run on Windows.
 
 ## Troubleshooting
 
@@ -85,7 +100,7 @@ docker run --rm -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/sdk:8.0 dotnet p
 - Update the password in Program.vb and rebuild
 
 ### Application won't start
-- Make sure all files in the publish-standalone folder are present
+- Make sure all files in the publish folder are present (don't move just the .exe)
 - Try running as Administrator
 
 ## Database Schema
